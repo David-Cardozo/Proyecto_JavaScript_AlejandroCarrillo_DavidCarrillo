@@ -1,0 +1,30 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
+}
+body{
+    background-color: rgb(96, 3, 3,0.8) ;
+    max-height: 100%;
+}
+.todo{
+    display: flex;
+    justify-content: center;
+    
+}
+.fondoLogo img{
+    width: 31.25vw;
+    height: 31.25vw;
+    
+}
+.fondoLogo{
+    margin-top: 15vh;
+    opacity: 0;
+    animation: aparecer1 2s;
+    
+}
+@keyframes aparecer1 {
+    0% { opacity: 0; }
+    50% { opacity: 1;  }
+    100%{opacity: 0;}
+}
