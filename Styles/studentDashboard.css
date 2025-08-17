@@ -116,3 +116,31 @@ header img:hover{
     0%{opacity: 0;  }
     100%{opacity: 1; }
 }
+.notificaciones{
+    background-color: #ffffff ;
+    width: 90%;
+    height: 51vh;
+    border-radius: 40px ;
+   
+    display: flex;
+    flex-direction: column;
+    padding-left: 3vw;
+}
+.campoNotifiacacion{
+    background-color: #D9D9D9;
+    width: 95%;
+    height: auto;
+    margin: 20px 0 ;
+    border-radius: 8px;
+    padding-left: 2vw;
+    display: flex;
+    align-items: center;
+}
+#imagen1{
+    width: 5vw;
+    height: 8vh;
+}
+#text1{
+    padding-left: 2vw;
+    font-size: 20px;
+}
