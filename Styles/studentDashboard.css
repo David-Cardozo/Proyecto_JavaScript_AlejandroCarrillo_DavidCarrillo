@@ -59,6 +59,59 @@ header img:hover{
     transform: scale(1.2,1.2);
 }
 
+.dashboard{
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 250px;
+}
+
+.stat{
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+}
+
+.stat p{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.stat h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.containerGraph{
+    width: 300px;
+    height: 30px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.bar{
+    height: 100%;
+    background-color: #4caf50;
+    width: 60%;
+    transition: width 0.5s ease;
+}
+
+.percentaje{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
 @keyframes aparecer2 {
     0%{opacity: 0;  }
     100%{opacity: 1; }
