@@ -3,9 +3,10 @@
     margin: 0;
     box-sizing: content-box;
 }
+
 body{
     background-color: rgb(96, 3, 3,0.8) ;
-    max-height: 100%;
+    min-height: 100vh;
 }
 .todo{
     display: flex;
@@ -20,11 +21,85 @@ body{
 .fondoLogo{
     margin-top: 15vh;
     opacity: 0;
-    animation: aparecer1 2s;
+    display: flex;
+    animation: aparecer1 3s forwards;
+    
+       
+}
+
+@keyframes aparecer1 {
+    0% { opacity: 0;  }
+    50% { opacity: 1;  }
+    100%{opacity: 0 ;}
+}
+.boxLogin{
+    position: absolute;
+    margin: 30px 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #FDECDA ;
+    width: 43vw;;
+    height: 90vh;
+    border-radius: 57px;
+    opacity: 0;
+    visibility: hidden;
+    animation: aparecer2 2s forwards;
+    animation-delay: 2.5s;
+
+}
+.boxLogin img{
+    width: 17vw;
+    height: 17vh;
     
 }
-@keyframes aparecer1 {
-    0% { opacity: 0; }
-    50% { opacity: 1;  }
-    100%{opacity: 0;}
+.logoNegro{
+    display: flex;
+    justify-content: center;
+}
+.titulo{
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+}
+.contenido{
+    font-size: 22px;
+    margin-top: 10vh;
+    
+
+}
+.usuario{
+    margin-left: 5vw;
+}
+.Contraseña{
+    margin-top: 4vh;
+    margin-left: 5vw;
+}
+input{
+    width: 90%;
+    height: 25px;
+    border-radius: 20px;
+    padding-left: 1vw;
+
+    
+}
+.boton{
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+    
+}
+button{
+    background-color: #D9D9D9;
+    width: 10vw;
+    height: 5vh;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 17px;
+}
+button:active{
+    transform: translateY(2px);
+}
+@keyframes aparecer2 {
+    0%{opacity: 0; visibility: visible;}
+    100%{opacity: 1; visibility: visible;}
 }

@@ -6,3 +6,10 @@ header img{
     background-color: black;
     height: 80px;
 }
+body{
+    animation: aparecer2 0.8s forwards;
+}
+@keyframes aparecer2 {
+    0%{opacity: 0;  }
+    100%{opacity: 1; }
+}
