@@ -64,15 +64,16 @@ header img:hover{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 250px;
+    row-gap: 50px;
+    column-gap: 150px;
 }
 
 .stat{
     background-color: white;
     padding: 15px;
     border: 1px solid #ddd;
-    border-radius: 10px;
-    width: auto;
+    border-radius: 2em;
+    width: 22vw;
     height: auto;
 }
 
@@ -87,7 +88,7 @@ header img:hover{
 }
 
 .containerGraph{
-    width: 300px;
+    width:20vw;
     height: 30px;
     background-color: #e0e0e0;
     border-radius: 5px;
@@ -121,7 +122,6 @@ header img:hover{
     width: 90%;
     height: 51vh;
     border-radius: 40px ;
-   
     display: flex;
     flex-direction: column;
     padding-left: 3vw;
@@ -143,4 +143,9 @@ header img:hover{
 #text1{
     padding-left: 2vw;
     font-size: 20px;
+}
+.cursosActivos {
+    align-self: flex-start;
+    width: 100%;
+    padding-left: 9vw;
 }
