@@ -58,6 +58,11 @@ header a:hover{
 header img:hover{
     transform: scale(1.2,1.2);
 }
+.lineaHeader{
+    width: 100%;
+    background-color: #000000;
+    height: 8px;
+}
 .contenido{
     display: flex;
     flex-direction: column;
