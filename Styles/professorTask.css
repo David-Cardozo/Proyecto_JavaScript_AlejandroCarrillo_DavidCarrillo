@@ -1,0 +1,146 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #D9D9D9;
+    animation: aparecer2 0.8s forwards;
+}
+
+header {
+    background-color: #602828;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 5px 10%;
+}
+
+.logo {
+    margin-right: auto;
+    height: 75px;
+    width: auto;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.profile {
+    margin-left: auto;
+    height: 60px;
+    width: auto;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 100%;
+}
+
+.arrow {
+    padding-left: 10px;
+    height: 20px;
+    width: auto;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+header a {
+    font-size: 700;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 6vw;
+    transition: all 0.2s;
+}
+
+header a:hover {
+    transform: scale(2, 2);
+    color: rgb(4, 170, 54);
+}
+
+header img:hover {
+    transform: scale(1.2, 1.2);
+}
+@keyframes aparecer2 {
+    0%{opacity: 0;  }
+    100%{opacity: 1; }
+}
+.contenido{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.titulo{
+    margin: 20px;
+}
+
+.tareasCurso{
+    background-color: white;
+    margin: 20px 0;
+    width: 70vw;
+    border-radius: 10px;
+    position: relative;
+}
+.titulo2{
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    margin: 20px;
+}
+.tituloEstado{
+    display: flex;
+    justify-content: center;
+}
+.estado{
+    display: flex;
+    justify-content: center;
+}
+.pendientes{
+    display: flex;
+    flex-direction: column;
+    color: #d31111;
+    text-shadow: 1px 1px 1px black,
+                    1px 1px 1px black,
+                    1px 1px 1px black;
+}
+.terminado{
+    display: flex;
+    flex-direction: column;
+    color: rgb(6, 175, 6);
+    text-shadow: 1px 1px 1px black,
+                    1px 1px 1px black,
+                    1px 1px 1px black;
+}
+.botonTarea img{
+    width: 5vw;
+    height: 8vh;
+}
+.botonTarea{
+    display: flex;
+    align-items: center;
+    width: 25vw;
+    margin: 2vh 4vw;
+    border-radius: 10px;
+    background-color: white;
+    padding: 2px 6px;
+}
+.botonTarea:hover{
+    box-shadow: 0 2px #666;
+    transform: translateY(1px);
+    background-color: #D9D9D9;
+}
+
+.addTask{
+   position: absolute;
+   cursor: pointer;
+   width: 50px;
+   height: 50px;
+   border-radius: 100%;
+   right: 0;
+   margin-right: 10px;
+   transition: all 0.3s;
+   background-color: #60282877;
+}
+
+.addTask:hover{
+    transform: scale(1.2,1.2);
+}

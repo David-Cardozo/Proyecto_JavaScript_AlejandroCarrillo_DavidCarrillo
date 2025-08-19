@@ -32,9 +32,11 @@ header {
     width: auto;
     cursor: pointer;
     transition: all 0.3s;
+    border-radius: 100%;
 }
 
 .arrow {
+    padding-left: 10px;
     height: 20px;
     width: auto;
     cursor: pointer;
@@ -46,7 +48,7 @@ header a {
     color: white;
     text-decoration: none;
     display: inline-block;
-    padding: 0 40px;
+    padding: 0 6vw;
     transition: all 0.2s;
 }
 
