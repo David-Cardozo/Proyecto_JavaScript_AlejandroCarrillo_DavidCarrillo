@@ -71,62 +71,51 @@ header img:hover {
     }
 }
 
-.contenido {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px 0;
-}
-
-.cursosDisponibles {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    column-gap: 80px;
-}
-
-.cursoN {
+.studentCard {
     background-color: #ffffff;
     justify-content: center;
     width: 26vw;
     border-radius: 30px;
-    margin: 60px 0;
+    margin: 20px 20px 20px 60px;
 }
 
-.tituloCurso {
+.studentName {
     font-size: 25px;
-    margin: 10px;
+    margin: auto;
+    text-align: center;
 }
 
-.descripcion {
-    font-size: 18px;
+.description {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    font-size: 20px;
     padding: 8px;
     color: rgb(0, 0, 0, 0.8);
+    text-align: center;
 }
 
-.imagencurso {
+.studentImg{
     display: flex;
     justify-content: center;
 }
 
-.imagencurso img {
-    width: 30vw;
-    height: 15vh;
+.studentImg img {
+    width: 5vw;
+    height: 10vh;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
 
 }
 
-.botonesCursos {
+.buttonStudents {
     display: flex;
     justify-content: center;
     margin: 20px;
     gap: 20px;
-
-
 }
 
-.botonesCursos button {
+.buttonStudents button {
     font-size: 20px;
     width: 80%;
     border-radius: 30px;
@@ -141,13 +130,13 @@ header img:hover {
     background-color: #1D9F28;
     color: white;
     border: none;
-
+    transition: all 0.3s;
+    margin-bottom: 10px;
 }
 
-.botonblanco {
-    background-color: white;
-    color: #1D9F28;
-    border-color: #1D9F28;
+
+.botonverde:hover {
+    transform: scale(1.05, 1.05);
 }
 
 .botonesCursos button:active {
@@ -156,12 +145,20 @@ header img:hover {
     transform: translateY(1px);
 }
 
-@keyframes aparecer2 {
-    0% {
-        opacity: 0;
-    }
+.studentsActive {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 80px;
+    margin: auto auto 50px 20px;
+}
 
-    100% {
-        opacity: 1;
-    }
+.buttonBack img{
+    height: 60px;
+    margin: 20px 20px 20px 20px;
+    transition: all 0.3s;
+}
+
+.buttonBack img:hover{
+    transform: scale(1.1,1.1);
 }
