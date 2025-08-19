@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../Styles/adminDashboard.css">
 </head>
+
 <body>
     <header>
         <img class="logo" src="../Images/studentDashboard/TechModern_icon.png" alt="">
@@ -17,10 +19,93 @@
             <a href="">Tareas</a>
             <a href="">Crear Perfil</a>
         </nav>
-        <img class="profile" src="../Images/studentDashboard/studentIcon.png" alt="">
+        <img class="profile" src="../Images/adminIco.png" alt="">
         <img class="arrow" src="../Images/studentDashboard/downArrow.png" alt="">
     </header>
 
-    
+    <div class="dashboard">
+        <div class="stat">
+            <h2>Estudiantes registrados</h2>
+            <p>4</p>
+        </div>
+        <div class="stat">
+            <h2>Profesores registrados</h2>
+            <p>4</p>
+        </div>
+        <div class="stat">
+            <h2>Cursos Totales</h2>
+            <p>4</p>
+        </div>
+        <div class="cursosActivos">
+            <div >
+                <h1 class="titleCard">Cursos</h1>
+                <div class="card">
+                    
+                    <div class="imagencurso"> <img src="../Images/imagencurso.png" alt=""></div>
+                    <div class="tituloCurso">Desarrollo de juegos</div>
+                    <div class="linea"></div>
+                    <div class="descripcion">
+                        <div class="profesor">profesor: Pedro gomez</div>
+                        <div class="tiempo">Tiempo:120 horas</div>
+
+                    </div>
+                    <div class="linea"></div>
+                    <div class="botonesCursos">
+                        <button class="botonverde">Modificar</button>
+                    </div>
+                </div>
+                <div class="botonesCursos">
+                    <button class="botonverde">+ Ver todos</button>
+                </div>
+            </div>
+
+            <div >
+                <h1 class="titleCard">Profesores</h1>
+                <div class="card">
+                    
+                    <div class="imagencurso"> <img src="../Images/professorIcon.svg" alt=""></div>
+                    <div class="tituloCurso">Pedro Gomez</div>
+                    <div class="linea"></div>
+                    <div class="descripcion">
+                        <div class="profesor">Cursos:</div>
+                        <div class="cursos">-Python <br> -JavaScript</div>
+
+                    </div>
+                    <div class="linea"></div>
+                    <div class="botonesCursos">
+                        <button class="botonverde">Modificar</button>
+                    </div>
+                </div>
+                <div class="botonesCursos">
+                    <button class="botonverde">+ Ver todos</button>
+                </div>
+            </div>
+
+            <div >
+                <h1 class="titleCard">Estudiantes</h1>
+                <div class="card">
+                    
+                    <div class="imagencurso"> <img src="../Images/studentIcon.png" alt=""></div>
+                    <div class="tituloCurso">Alejandro</div>
+                    <div class="linea"></div>
+                    <div class="descripcion">
+                        <div class="profesor">Cursos:</div>
+                        <div class="cursos">-Python <br> -JavaScript</div>
+
+                    </div>
+                    <div class="linea"></div>
+                    <div class="botonesCursos">
+                        <button class="botonverde">Modificar</button>
+                    </div>
+                </div>
+                <div class="botonesCursos">
+                    <button class="botonverde">+ Ver todos</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
 </body>
+
 </html>
