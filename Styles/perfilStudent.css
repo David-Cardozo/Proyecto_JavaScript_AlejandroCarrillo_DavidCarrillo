@@ -1,0 +1,158 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #D9D9D9;
+    animation: aparecer2 0.8s forwards;
+    
+}
+
+header{
+    background-color: #602828;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 5px 10%;
+}
+
+.logo{
+    margin-right: auto;
+    height: 75px;
+    width: auto;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.profile{
+    margin-left: auto;
+    height: 60px;
+    width: auto;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.arrow{
+    height: 20px;
+    width: auto;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+header a{
+    font-size: 700;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 40px;
+    transition: all 0.2s;
+}
+
+header a:hover{
+    transform: scale(2,2);
+    color: rgb(4, 170, 54);
+}
+
+header img:hover{
+    transform: scale(1.2,1.2);
+}
+.lineaHeader{
+    width: 100%;
+    background-color: #000000;
+    height: 8px;
+}
+@keyframes aparecer2 {
+    0%{opacity: 0;  }
+    100%{opacity: 1; }
+}
+.todo{
+    display: flex;
+    justify-content: center;
+    
+}
+.cotenido{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 70vw;
+    position: relative;
+    min-height: 100vh;
+    
+}
+.pared{
+    background-color: #602828;
+    width: 70vw;
+    height: 25vh;
+}
+.tituloPerfil{
+   position: absolute;
+    top: 27vh;                  
+    left: 50%;                  
+    transform: translate(-50%, -50%); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+
+}
+.imagenUsuario{
+    width: 13vw;        
+    aspect-ratio: 1/1;  
+    max-width: 160px; 
+    min-width: 100px;
+    background-color: black;
+    border-radius: 100%;
+    overflow: hidden;
+}
+.nombre{
+    font-size: 20px;
+}
+.titulo{
+    margin-top: 40vh;
+    margin-right: 40vw;
+    
+}
+.informacionPersonal{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 15vw;
+    
+}
+.columna1 , .columna2{
+    font-size: 20px;
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: auto;
+    min-height: auto;
+}
+.input input{
+    min-width: 20vw;
+    height: 5vh;
+}
+.guardar button{
+    min-width: 10vw;
+    min-height: 5vh;
+    border-radius: 20px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    background-color: #4caf50;
+    color: white;
+    border: #4caf50;
+    
+}
+.guardar button:active {
+  
+  box-shadow: 0 2px #666;
+  transform: translateY(1px);
+}
+.pared2{
+    background-color: #602828;
+    width: 70vw;
+    height: 10vh;
+}
