@@ -10,39 +10,38 @@ async function fetchDataUsuarios() {
     return data;
 }
 
-function login() {
+function login(data) {
     const userInput = document.getElementById('usuario').value.trim();
     const passInput = document.getElementById('pass').value.trim();
     let user = "";
     let pass = "";
     let estado = "";
-    fetchDataUsuarios().then(data => {
-        data.forEach(i => {
-            if (i.user === userInput && i.password === passInput) {
-                user = i.user;
-                pass = i.password;
-                estado = i.type;
-            }
-        });
-        console.log("Datos de la API:", data);
-        if (user && pass) {
-            const enlace = document.getElementById('enlace');
-            if (estado === 'Estudiante') {
-                enlace.href = '../webHTML/studentDashboard.html'; 
-            } else if (estado === 'Profesor') {
-                enlace.href = '../webHTML/professorDashboard.html'; 
-            } else if (estado === 'Admin') {
-                enlace.href = '../webHTML/adminDashboard.html'; 
-            }
-            
-            enlace.click();
-        } else {
-            alert("Usuario o contraseña incorrectos");
+    data.forEach(i => {
+        if (i.user === userInput && i.password === passInput) {
+            user = i.user;
+            pass = i.password;
+            estado = i.type;
         }
-    })
+    });
+    console.log("Datos de la API:", data);
+    if (user && pass) {
+        const enlace = document.getElementById('enlace');
+        if (estado === 'Estudiante') {
+            enlace.href = '../webHTML/studentDashboard.html';
+        } else if (estado === 'Profesor') {
+            enlace.href = '../webHTML/professorDashboard.html';
+        } else if (estado === 'Admin') {
+            enlace.href = '../webHTML/adminDashboard.html';
+        }
+
+        enlace.click();
+    } else {
+        alert("Usuario o contraseña incorrectos");
+    }
+
 }
 async function fetchDataCursos() {
-     const res = await fetch('https://68a66b9c639c6a54e99eb79c.mockapi.io/api/cursos/cursos', {
+    const res = await fetch('https://68a66b9c639c6a54e99eb79c.mockapi.io/api/cursos/cursos', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -51,4 +50,7 @@ async function fetchDataCursos() {
 
     let data2 = await res.json();
     return data2;
+}
+async function mostrarcursos() {
+
 }
