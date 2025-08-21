@@ -15,7 +15,13 @@ header{
     justify-content: space-between;
     align-items: center;
     height: 80px;
-    padding: 5px 10%;
+    padding: 5px 10%;   
+}
+header nav{
+    display: flex;
+    column-gap:5vw;
+    align-items: center;
+     flex-wrap: wrap;
 }
 
 .logo{

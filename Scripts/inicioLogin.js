@@ -1,4 +1,4 @@
-async function fetchData() {
+async function fetchDataUsuarios() {
     const res = await fetch('https://68a74769639c6a54e9a1952a.mockapi.io/api/login/login', {
         method: 'GET',
         headers: {
@@ -16,7 +16,7 @@ function login() {
     let user = "";
     let pass = "";
     let estado = "";
-    fetchData().then(data => {
+    fetchDataUsuarios().then(data => {
         data.forEach(i => {
             if (i.user === userInput && i.password === passInput) {
                 user = i.user;
@@ -40,4 +40,15 @@ function login() {
             alert("Usuario o contraseña incorrectos");
         }
     })
+}
+async function fetchDataCursos() {
+     const res = await fetch('https://68a66b9c639c6a54e99eb79c.mockapi.io/api/cursos/cursos', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    let data2 = await res.json();
+    return data2;
 }
