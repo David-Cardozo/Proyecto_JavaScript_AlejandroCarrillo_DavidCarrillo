@@ -52,5 +52,5 @@ async function fetchDataCursos() {
     return data2;
 }
 async function mostrarcursos() {
-
+    
 }
