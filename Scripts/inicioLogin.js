@@ -10,35 +10,34 @@ async function fetchDataUsuarios() {
     return data;
 }
 
-function login(data) {
+function login() {
     const userInput = document.getElementById('usuario').value.trim();
     const passInput = document.getElementById('pass').value.trim();
     let user = "";
     let pass = "";
     let estado = "";
-    data.forEach(i => {
-        if (i.user === userInput && i.password === passInput) {
-            user = i.user;
-            pass = i.password;
-            estado = i.type;
-        }
-    });
-    console.log("Datos de la API:", data);
-    if (user && pass) {
-        const enlace = document.getElementById('enlace');
-        if (estado === 'Estudiante') {
-            enlace.href = '../webHTML/studentDashboard.html';
-        } else if (estado === 'Profesor') {
-            enlace.href = '../webHTML/professorDashboard.html';
-        } else if (estado === 'Admin') {
-            enlace.href = '../webHTML/adminDashboard.html';
-        }
 
-        enlace.click();
-    } else {
-        alert("Usuario o contraseña incorrectos");
-    }
-
+    fetchDataUsuarios().then(data => {
+        data.forEach(i => {
+            if (i.user === userInput && i.password === passInput) {
+                usuarioactual=i
+            }
+        });
+        if (usuarioactual) {
+            const enlace = document.getElementById('enlace');
+            if (usuarioactual.type === 'Estudiante') {
+                enlace.href = '../webHTML/studentDashboard.html'; 
+            } else if (usuarioactual.type === 'Profesor') {
+                enlace.href = '../webHTML/professorDashboard.html'; 
+            } else if (usuarioactual.type === 'Admin') {
+                enlace.href = '../webHTML/adminDashboard.html'; 
+            }
+            
+            enlace.click();
+        } else {
+            alert("Usuario o contraseña incorrectos");
+        }
+    })
 }
 async function fetchDataCursos() {
     const res = await fetch('https://68a66b9c639c6a54e99eb79c.mockapi.io/api/cursos/cursos', {
@@ -51,6 +50,6 @@ async function fetchDataCursos() {
     let data2 = await res.json();
     return data2;
 }
-async function mostrarcursos() {
-    
+async function mostrarcursos(data2,usuarioactual) {
+   
 }
