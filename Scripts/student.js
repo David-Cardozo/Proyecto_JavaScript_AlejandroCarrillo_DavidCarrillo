@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         
         console.log(cursos)
         const cursodiv =document.querySelector(`.cursosActivos`)
-        cursodiv.innerHTML = '';
+        
         cursos.forEach(curso => {
             cursodiv.innerHTML += `
             <div class="cursoN">
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                     <button class="botonverde">Tareas</button>
                     <button class="botonblanco">Más...</button>
                 </div>
-            </div>;`
+            </div>`
             
         });
     
