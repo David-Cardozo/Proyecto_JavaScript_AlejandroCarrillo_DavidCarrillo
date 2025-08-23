@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async function() {
+document.addEventListener("DOMContentLoaded", async function () {
     const usuarioactual = JSON.parse(localStorage.getItem('usuarioactual'));
     if (usuarioactual === null) {
         window.location.href = '../webHTML/inicioLogin.html';
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                 'Content-Type': 'application/json'
             }
         });
-    
+
         let data2 = await res.json();
         return data2;
     }
@@ -19,29 +19,29 @@ document.addEventListener("DOMContentLoaded", async function() {
         const usuarioactual = JSON.parse(localStorage.getItem('usuarioactual'));
         const data2 = await fetchDataCursos();
         let cursos = [];
-        cursosActivos=[];
+        cursosActivos = [];
         if (usuarioactual && usuarioactual.cursos && usuarioactual.cursos.length > 0) {
             data2.forEach(i => {
                 if (i.id && usuarioactual.cursos.includes(i.id)) {
-                    cursos.push(i); 
+                    cursos.push(i);
                 }
             });
         }
         cursos = cursos.slice(0, 3);
         console.log(cursos)
-            cursos.forEach(i=>{
-                if (i.estatus ==="activo"){
-                    cursosActivos.push(i);
-                }
-                });
-            
-            const cajacurso=document.getElementById(`activosN`);
-                cajacurso.innerHTML= cursosActivos.length;
+        cursos.forEach(i => {
+            if (i.estatus === "activo") {
+                cursosActivos.push(i);
+            }
+        });
 
-            
+        const cajacurso = document.getElementById(`activosN`);
+        cajacurso.innerHTML = cursosActivos.length;
 
-        
-        const cursodiv =document.querySelector(`.cursosActivos`)
+
+
+
+        const cursodiv = document.querySelector(`.cursosActivos`)
         cursos.forEach(curso => {
             cursodiv.innerHTML += `
             <div class="cursoN">
@@ -60,11 +60,11 @@ document.addEventListener("DOMContentLoaded", async function() {
                     <button class="botonblanco">Más...</button>
                 </div>
             </div>`
-            
+
         });
-    
+
         return cursos
-        
+
     }
     async function cursostotales() {
         const usuarioactual = JSON.parse(localStorage.getItem('usuarioactual'));
@@ -73,14 +73,14 @@ document.addEventListener("DOMContentLoaded", async function() {
         if (usuarioactual && usuarioactual.cursos && usuarioactual.cursos.length > 0) {
             data2.forEach(i => {
                 if (i.id && usuarioactual.cursos.includes(i.id)) {
-                    cursos.push(i); 
+                    cursos.push(i);
                 }
             });
         }
-        const cursodiv =document.querySelector(`.cursosDisponibles`)
+        const cursodiv = document.querySelector(`.cursosDisponibles`)
         cursos.forEach(curso => {
-            cursodiv.innerHTML += 
-        `<div class="cursoN">
+            cursodiv.innerHTML +=
+                `<div class="cursoN">
                 <div class="imagencurso"> <img src="${curso.imagen}" alt=""></div>
                 <div class="tituloCurso">${curso.nombre}</div>
                 <div class="linea"></div>
@@ -92,15 +92,81 @@ document.addEventListener("DOMContentLoaded", async function() {
                 </div>
 
             </div>`
-        })
+        });
+        return cursos
     }
-    if (window.location.pathname.includes("studentDashboard.html")){
-        await mostrarcursos();
-    }
-    if (window.location.pathname.includes("cursosStudents.html")) {
-        await cursostotales();  
-    }
-    
-});
+    async function mostrarTareas() {
+    const usuarioactual = JSON.parse(localStorage.getItem('usuarioactual'));
+    const cursosTodos = await fetchDataCursos();
+    const cursosUsuario = cursosTodos.filter(curso =>
+        usuarioactual.cursos.includes(curso.id)
+    );
 
-// comentario para arregñar bug en hithub de commit 
+    const contenedor = document.querySelector('.contenido');
+
+    cursosUsuario.forEach(curso => {
+        const tareasCurso = curso.tareas;
+
+        const pendientes = [];
+        const terminadas = [];
+
+        tareasCurso.forEach(tarea => {
+            const tareaUsuario = usuarioactual.tareas?.find(t =>
+                (t.cursoId === curso.id) && (t.idTarea === tarea.id)
+            );
+
+            if (tareaUsuario && tareaUsuario.estado === "terminado") {
+                terminadas.push(tarea);
+            } else {
+                pendientes.push(tarea);
+            }
+        });
+
+        let pendientesHTML = '';
+        pendientes.forEach(t => {
+            pendientesHTML += `
+        <button class="botonTarea">
+            <img src="../Images/tareas.svg" alt=""> ${curso.nombre} - ${t.titulo}
+        </button>
+    `;
+        });
+
+        let terminadasHTML = '';
+        terminadas.forEach(t => {
+            terminadasHTML += `
+        <button class="botonTarea">
+            <img src="../Images/tareas.svg" alt=""> ${curso.nombre} - ${t.titulo}
+        </button>
+    `;
+        });
+
+        contenedor.innerHTML += `
+    <div class="tareasCurso">
+        <div class="titulo2">${curso.nombre}</div>
+        <div class="estado">
+            <div class="pendientes">
+                <div class="tituloEstado">Pendientes</div>
+                ${pendientesHTML}
+            </div>
+            <div class="terminado">
+                <div class="tituloEstado">Terminadas</div>
+                ${terminadasHTML}
+            </div>
+        </div>
+    </div>
+    `;
+    });
+}
+
+
+if (window.location.pathname.includes("studentDashboard.html")) {
+            await mostrarcursos();
+        }
+        if (window.location.pathname.includes("cursosStudents.html")) {
+            await cursostotales();
+        }
+        if (window.location.pathname.includes("tareasStudents.html")) {
+            await mostrarTareas();
+        }
+
+    });
