@@ -199,42 +199,62 @@ document.addEventListener('click', function (e) {
 const desaparecer = document.querySelector(`.contenido`);
 const aparecer = document.querySelector(`.contenido2`)
 document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("botonverde")) {
-        desaparecer.style.display = "none";
-        const idCurso = e.target.getAttribute("dataId")
-        const curso = cursos.find(c => (c.id) == idCurso);
-        let temas = "";
-        curso.temas.forEach(t => {
-            temas += (t);
-        });
-        aparecer.innerHTML = `
-            <div class="atras"><button>Volver a cursos </button></div>
-            <div class="ImagenGrande"><img src="${curso.imagen}" alt=""></div>
-            <div class="titulo2">${curso.nombre} </div>
-            <div class="contenedor2"
-                <div class="descripcion2">
-                    <div>Descripcion</div>
-                    ${curso.descripcion}
-                </div>
-                <div class="requisitos">
-                    <div>Requisitos</div>
-                    ${curso.requisitos}
-                </div>
-                <div class="estructura">
-                    <div>Estructura</div>
-                    ${curso.estructura}
-                </div>
+  if (e.target.classList.contains("botonverde")) {
+    desaparecer.classList.remove("visible");
+    desaparecer.classList.add("desaparecer");
+
+    const idCurso = e.target.getAttribute("dataId");
+    const curso = cursos.find((c) => c.id == idCurso);
+
+    let temas = "";
+    curso.temas.forEach((t) => {
+      temas += `${t.id}. ${t.titulo}<br>`;
+    });
+
+    setTimeout(() => {
+      aparecer.innerHTML = `
+        <div class="atras"><button class="volverCursos"> ←Volver a cursos </button></div>
+        <div class="ImagenGrande"><img src="${curso.imagen}" alt=""></div>
+        <div class="titulo2">${curso.nombre} </div>
+        <div class="frames">
+          <div class="frame1">
+            <div class="descripcion2">
+              <div class="negrilla">Descripcion</div>
+              ${curso.descripcion}
             </div>
+            <div class="requisitos">
+              <div class="negrilla">Requisitos</div>
+              ${curso.requisitos}
+            </div>
+            <div class="estructura">
+              <div class="negrilla">Estructura</div>
+              ${curso.estructura}
+            </div>
+          </div>
+          <div class="frame2">
             <div class="temasJs">
-                <div>Temas</div>
-                ${temas}
-                <button>Ver</button>
+              <div class="negrilla">Temas</div>
+              ${temas}
+              <button>Ver</button>
             </div>
             <div class="notas"><button>Ver Notas</button></div>
-        `;
-        console.log(aparecer)
+          </div>
+        </div>
+      `;
+      aparecer.classList.remove("desaparecer");
+      aparecer.classList.add("visible");
+      desaparecer.style.display = "none";
+    }, 600);
+  }
 
-        aparecer.style.display = "block";
+  if (e.target.classList.contains("volverCursos")) {
+    aparecer.classList.remove("visible");
+    aparecer.classList.add("desaparecer");
 
-    }
+    setTimeout(() => {
+      desaparecer.style.display = "flex";
+      desaparecer.classList.remove("desaparecer");
+      desaparecer.classList.add("visible");
+    }, 600);
+  }
 });

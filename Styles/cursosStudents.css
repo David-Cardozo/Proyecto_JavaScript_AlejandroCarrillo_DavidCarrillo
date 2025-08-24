@@ -230,8 +230,10 @@ header nav{
 }
 .contenido2{
     display: none;
+    flex-direction: column;
     animation: aparecer2 0.8s forwards;
     width: 80vw;
+    gap: 30px;
 }
 
 .ImagenGrande img{
@@ -247,14 +249,105 @@ header nav{
     position: absolute;
     color: white;
     font-size: 30px;
-    margin-top: -50px;
+    margin-top: 200px;
     margin-left: 20px;
+}
+.frames{
+    display: flex;
+    column-gap: 2em;
 }
 .contenedor2{
     display: flex;
     flex-direction: column;
 }
+.frame1{
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+    row-gap:20px;
+}
+.frames button{
+    background-color: #1D9F28;
+    color: white;
+    border: none;
+    font-size: 17px;
+    width: 100px;
+    height: 5vh;
+    border-radius: 30px;
+}
+.frames button:active{
+    box-shadow: 0 2px #666;
+    transform: translateY(1px);
+}
+.descripcion2,.requisitos, .estructura, .temasJs{
+    background-color: white;
+    border-radius: 20px;
+    padding: 1em;
+}
+.negrilla{
+    font-size: 25px;
+}
+.frame2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.temasJs{
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.atras{
+    height: 25px;
+}
+.atras button{
+    all: unset;
+    margin-top: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.atras button:hover {
+  border-bottom: 2px solid black;
 
+}
+.oculto {
+  display: none;
+  opacity: 0;
+}
+
+.visible {
+  display: flex; 
+  animation: aparecer 0.6s forwards;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.desaparecer {
+  animation: desaparecer 0.6s forwards;
+}
+
+@keyframes desaparecer {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
 @media (min-width: 1600px) {
     .cursosDisponibles {
         row-gap: 250px;
