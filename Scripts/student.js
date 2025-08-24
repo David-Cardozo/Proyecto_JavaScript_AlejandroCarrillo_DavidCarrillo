@@ -195,3 +195,14 @@ document.addEventListener('click', function (e) {
         cartaPadre.classList.toggle('flip');  
     }
 });
+const desaparecer = document.querySelector(`.contenido`);
+
+document.addEventListener("click", function(e) {
+    if (e.target.classList.contains("botonverde")) {
+        desaparecer.style.display = "none";
+        document.querySelector(".contenido2").style.display = "block";
+          if (e.target.classList.contains("botonverde")){
+            
+          }
+    }
+});

@@ -224,3 +224,7 @@ header nav{
 .carta.flip>.contenedor {
     transform: rotateY(180deg);
 }
+.contenido2{
+    display: none;
+    animation: aparecer2 0.8s forwards;
+}
