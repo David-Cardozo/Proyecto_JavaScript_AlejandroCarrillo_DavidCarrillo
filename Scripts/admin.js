@@ -18,6 +18,18 @@ document.addEventListener("DOMContentLoaded", async function () {
         return adminCursos;
     }
 
+    async function fetchDataLogin() {
+        const res = await fetch('https://68a74769639c6a54e9a1952a.mockapi.io/api/login/login', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        let adminLogin = await res.json();
+        return adminLogin;
+    }
+
     async function allCurses() {
         const usuarioActual = JSON.parse(localStorage.getItem('usuarioactual'));
         const data = await fetchDataCurses();
@@ -94,11 +106,92 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 
+    async function showStudents() {
+        const usuarios = await fetchDataLogin();
+        const cursos = await fetchDataCurses();
+
+        const contenedor = document.querySelector(".cursosDisponibles");
+
+        const estudiantes = usuarios.filter(usuario => usuario.type === "Estudiante");
+
+        estudiantes.forEach(estudiante => {
+
+            const nombresCursos = estudiante.cursos.map(idCurso => {
+                const cursoEncontrado = cursos.find(curso => curso.id == idCurso);
+                return cursoEncontrado ? cursoEncontrado.nombre : "Curso no encontrado";
+            });
+
+            contenedor.innerHTML += `
+            <div class="carta">
+            <div class="contenedor">
+                <div class="cursoN">
+                    <div class="imagencurso">
+                        <img src="../Images/studentIcon.png" alt="">
+                    </div>
+                    <div class="tituloCurso">${estudiante.name}</div>
+                    <div class="linea"></div>
+                    <div class="descripcion">Cursos: ${nombresCursos.join(', ')}</div>
+                    <div class="linea"></div>
+                    <div class="botonesCursos">
+                        <button class="botonverde">Editar</button>
+                        <button class="botonblanco">Eliminar</button>
+                    </div>
+                </div>
+        </div>
+
+        `;
+        })
+    }
+
+    async function showProfessors() {
+        const usuarios = await fetchDataLogin();
+        const cursos = await fetchDataCurses();
+
+        const contenedor = document.querySelector(".cursosDisponibles");
+
+        const estudiantes = usuarios.filter(usuario => usuario.type === "Profesor");
+
+        estudiantes.forEach(profesor => {
+
+            const nombresCursos = profesor.cursos.map(idCurso => {
+                const cursoEncontrado = cursos.find(curso => curso.id == idCurso);
+                return cursoEncontrado ? cursoEncontrado.nombre : "Curso no encontrado";
+            });
+
+            contenedor.innerHTML += `
+            <div class="carta">
+            <div class="contenedor">
+                <div class="cursoN">
+                    <div class="imagencurso">
+                        <img src="../Images/studentIcon.png" alt="">
+                    </div>
+                    <div class="tituloCurso">${profesor.name}</div>
+                    <div class="linea"></div>
+                    <div class="descripcion">Cursos: ${nombresCursos.join(', ')}</div>
+                    <div class="linea"></div>
+                    <div class="botonesCursos">
+                        <button class="botonverde">Editar</button>
+                        <button class="botonblanco">Eliminar</button>
+                    </div>
+                </div>
+        </div>
+
+        `;
+
+        })
+    }
+
     if (window.location.pathname.includes("adminCurses.html")) {
         await allCurses();
     }
-    if(window.location.pathname.includes("adminTareas.html")) {
+    if (window.location.pathname.includes("adminTareas.html")) {
         await allTask();
+    }
+    if (window.location.pathname.includes("adminStudents.html")) {
+        await showStudents();
+    }
+    if (window.location.pathname.includes("adminProfessors.html")) {
+        await showProfessors();
     }
 
 });
