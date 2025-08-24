@@ -1,3 +1,4 @@
+let cursos = [];
 document.addEventListener("DOMContentLoaded", async function () {
     const usuarioactual = JSON.parse(localStorage.getItem('usuarioactual'));
     if (usuarioactual === null) {
@@ -18,8 +19,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     async function mostrarcursos() {
         const usuarioactual = JSON.parse(localStorage.getItem('usuarioactual'));
         const data2 = await fetchDataCursos();
-        let cursos = [];
-        cursosActivos = [];
+        cursos = [];
+        let cursosActivos = [];
         if (usuarioactual && usuarioactual.cursos && usuarioactual.cursos.length > 0) {
             data2.forEach(i => {
                 if (i.id && usuarioactual.cursos.includes(i.id)) {
@@ -56,7 +57,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 </div>
                 <div class="linea"></div>
                 <div class="botonesCursos">
-                    <button class="botonverde">Tareas</button>
+                    <button class="botonverde" dataId="${curso.id}">Tareas</button>
                     <button class="botonblanco">Más...</button>
                 </div>
             </div>`
@@ -69,7 +70,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     async function cursostotales() {
         const usuarioactual = JSON.parse(localStorage.getItem('usuarioactual'));
         const data2 = await fetchDataCursos();
-        let cursos = [];
+        cursos = [];
         if (usuarioactual && usuarioactual.cursos && usuarioactual.cursos.length > 0) {
             data2.forEach(i => {
                 if (i.id && usuarioactual.cursos.includes(i.id)) {
@@ -93,7 +94,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                     <div class="descripcion">${curso.descripcion}</div>
                     <div class="linea"></div>
                     <div class="botonesCursos">
-                        <button class="botonverde">Ver</button>
+                        <button class="botonverde" dataId="${curso.id}">Ver</button>
                         <button class="botonblanco">Más...</button>
                     </div>
                 </div>
@@ -130,7 +131,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const terminadas = [];
 
             tareasCurso.forEach(tarea => {
-                const tareaUsuario = usuarioactual.tareas?.find(t =>
+                const tareaUsuario = usuarioactual.tareas.find(t =>
                     (t.cursoId === curso.id) && (t.idTarea === tarea.id)
                 );
 
@@ -190,19 +191,50 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 });
 document.addEventListener('click', function (e) {
-    if (e.target.classList.contains('botonblanco')) {  
+    if (e.target.classList.contains('botonblanco')) {
         const cartaPadre = e.target.closest('.carta');
-        cartaPadre.classList.toggle('flip');  
+        cartaPadre.classList.toggle('flip');
     }
 });
 const desaparecer = document.querySelector(`.contenido`);
-
-document.addEventListener("click", function(e) {
+const aparecer = document.querySelector(`.contenido2`)
+document.addEventListener("click", function (e) {
     if (e.target.classList.contains("botonverde")) {
         desaparecer.style.display = "none";
-        document.querySelector(".contenido2").style.display = "block";
-          if (e.target.classList.contains("botonverde")){
-            
-          }
+        const idCurso = e.target.getAttribute("dataId")
+        const curso = cursos.find(c => (c.id) == idCurso);
+        let temas = "";
+        curso.temas.forEach(t => {
+            temas += (t);
+        });
+        aparecer.innerHTML = `
+            <div class="atras"><button>Volver a cursos </button></div>
+            <div class="ImagenGrande"><img src="${curso.imagen}" alt=""></div>
+            <div class="titulo2">${curso.nombre} </div>
+            <div class="contenedor2"
+                <div class="descripcion2">
+                    <div>Descripcion</div>
+                    ${curso.descripcion}
+                </div>
+                <div class="requisitos">
+                    <div>Requisitos</div>
+                    ${curso.requisitos}
+                </div>
+                <div class="estructura">
+                    <div>Estructura</div>
+                    ${curso.estructura}
+                </div>
+            </div>
+            <div class="temasJs">
+                <div>Temas</div>
+                ${temas}
+                <button>Ver</button>
+            </div>
+            <div class="notas"><button>Ver Notas</button></div>
+        `;
+        console.log(aparecer)
+
+        aparecer.style.display = "block";
+
     }
 });
