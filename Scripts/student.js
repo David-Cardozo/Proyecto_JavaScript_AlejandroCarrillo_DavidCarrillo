@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         return cursos
 
     }
+
     async function cursostotales() {
         const usuarioactual = JSON.parse(localStorage.getItem('usuarioactual'));
         const data2 = await fetchDataCursos();
