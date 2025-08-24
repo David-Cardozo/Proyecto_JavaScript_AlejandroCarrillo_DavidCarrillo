@@ -45,22 +45,36 @@ document.addEventListener("DOMContentLoaded", async function () {
         const cursodiv = document.querySelector(`.cursosActivos`)
         cursos.forEach(curso => {
             cursodiv.innerHTML += `
-            <div class="cursoN">
-                <div class="imagencurso"> 
-                    <img src="${curso.imagen}" alt="">
+            <div class="carta">
+            <div class="contenedor">
+                <div class="cursoN">
+                    <div class="imagencurso"> 
+                        <img src="${curso.imagen}" alt="">
+                    </div>
+                    <div class="tituloCurso">${curso.nombre}</div>
+                    <div class="linea"></div>
+                    <div class="descripcion">
+                        <div class="profesor">Profesor: ${curso.profesores}</div>
+                        <div class="tiempo">Tiempo: ${curso.duracion} horas</div>
+                    </div>
+                    <div class="linea"></div>
+                    <div class="botonesCursos">
+                        <button class="botonverde" dataId="${curso.id}">Tareas</button>
+                        <button class="botonblanco">Más...</button>
+                    </div>
                 </div>
-                <div class="tituloCurso">${curso.nombre}</div>
-                <div class="linea"></div>
-                <div class="descripcion">
-                    <div class="profesor">Profesor: ${curso.profesores}</div>
-                    <div class="tiempo">Tiempo: ${curso.duracion} horas</div>
+                <div class="cartaNAtras">
+                    <div class="tituloCurso">${curso.nombre}</div>
+                    <div class="linea"></div>
+                    <div class="descripcion">${curso.descripcion}</div>
+                    <div class="linea"></div>
+                    <div class="botonesCursos">
+                        <button class="botonblanco">Ocultar</button>
+                    </div>
                 </div>
-                <div class="linea"></div>
-                <div class="botonesCursos">
-                    <button class="botonverde" dataId="${curso.id}">Tareas</button>
-                    <button class="botonblanco">Más...</button>
-                </div>
-            </div>`
+            </div>
+        </div>
+            `
 
         });
 
