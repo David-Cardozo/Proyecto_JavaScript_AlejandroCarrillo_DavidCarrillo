@@ -80,67 +80,86 @@ document.addEventListener("DOMContentLoaded", async function () {
         const cursodiv = document.querySelector(`.cursosDisponibles`)
         cursos.forEach(curso => {
             cursodiv.innerHTML +=
-                `<div class="cursoN">
-                <div class="imagencurso"> <img src="${curso.imagen}" alt=""></div>
-                <div class="tituloCurso">${curso.nombre}</div>
-                <div class="linea"></div>
-                <div class="descripcion">${curso.descripcion}</div>
-                <div class="linea"></div>
-                <div class="botonesCursos">
-                    <button class="botonverde">Ver</button>
-                    <button class="botonblanco">mas...</button>
+
+                `
+        <div class="carta">
+            <div class="contenedor">
+                <div class="cursoN">
+                    <div class="imagencurso">
+                        <img src="${curso.imagen}" alt="">
+                    </div>
+                    <div class="tituloCurso">${curso.nombre}</div>
+                    <div class="linea"></div>
+                    <div class="descripcion">${curso.descripcion}</div>
+                    <div class="linea"></div>
+                    <div class="botonesCursos">
+                        <button class="botonverde">Ver</button>
+                        <button class="botonblanco">Más...</button>
+                    </div>
                 </div>
 
-            </div>`
+                <div class="cartaNAtras">
+                    <div class="tituloCurso">${curso.nombre}</div>
+                    <div class="linea"></div>
+                    <div class="descripcion">${curso.descripcion}</div>
+                    <div class="linea"></div>
+                    <div class="botonesCursos">
+                        <button class="botonblanco">Ocultar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `
+
         });
         return cursos
     }
     async function mostrarTareas() {
-    const usuarioactual = JSON.parse(localStorage.getItem('usuarioactual'));
-    const cursosTodos = await fetchDataCursos();
-    const cursosUsuario = cursosTodos.filter(curso =>
-        usuarioactual.cursos.includes(curso.id)
-    );
+        const usuarioactual = JSON.parse(localStorage.getItem('usuarioactual'));
+        const cursosTodos = await fetchDataCursos();
+        const cursosUsuario = cursosTodos.filter(curso =>
+            usuarioactual.cursos.includes(curso.id)
+        );
 
-    const contenedor = document.querySelector('.contenido');
+        const contenedor = document.querySelector('.contenido');
 
-    cursosUsuario.forEach(curso => {
-        const tareasCurso = curso.tareas;
+        cursosUsuario.forEach(curso => {
+            const tareasCurso = curso.tareas;
 
-        const pendientes = [];
-        const terminadas = [];
+            const pendientes = [];
+            const terminadas = [];
 
-        tareasCurso.forEach(tarea => {
-            const tareaUsuario = usuarioactual.tareas?.find(t =>
-                (t.cursoId === curso.id) && (t.idTarea === tarea.id)
-            );
+            tareasCurso.forEach(tarea => {
+                const tareaUsuario = usuarioactual.tareas?.find(t =>
+                    (t.cursoId === curso.id) && (t.idTarea === tarea.id)
+                );
 
-            if (tareaUsuario && tareaUsuario.estado === "terminado") {
-                terminadas.push(tarea);
-            } else {
-                pendientes.push(tarea);
-            }
-        });
+                if (tareaUsuario && tareaUsuario.estado === "terminado") {
+                    terminadas.push(tarea);
+                } else {
+                    pendientes.push(tarea);
+                }
+            });
 
-        let pendientesHTML = '';
-        pendientes.forEach(t => {
-            pendientesHTML += `
+            let pendientesHTML = '';
+            pendientes.forEach(t => {
+                pendientesHTML += `
         <button class="botonTarea">
             <img src="../Images/tareas.svg" alt=""> ${curso.nombre} - ${t.titulo}
         </button>
     `;
-        });
+            });
 
-        let terminadasHTML = '';
-        terminadas.forEach(t => {
-            terminadasHTML += `
+            let terminadasHTML = '';
+            terminadas.forEach(t => {
+                terminadasHTML += `
         <button class="botonTarea">
             <img src="../Images/tareas.svg" alt=""> ${curso.nombre} - ${t.titulo}
         </button>
     `;
-        });
+            });
 
-        contenedor.innerHTML += `
+            contenedor.innerHTML += `
     <div class="tareasCurso">
         <div class="titulo2">${curso.nombre}</div>
         <div class="estado">
@@ -155,18 +174,24 @@ document.addEventListener("DOMContentLoaded", async function () {
         </div>
     </div>
     `;
-    });
-}
+        });
+    }
 
 
-if (window.location.pathname.includes("studentDashboard.html")) {
-            await mostrarcursos();
-        }
-        if (window.location.pathname.includes("cursosStudents.html")) {
-            await cursostotales();
-        }
-        if (window.location.pathname.includes("tareasStudents.html")) {
-            await mostrarTareas();
-        }
+    if (window.location.pathname.includes("studentDashboard.html")) {
+        await mostrarcursos();
+    }
+    if (window.location.pathname.includes("cursosStudents.html")) {
+        await cursostotales();
+    }
+    if (window.location.pathname.includes("tareasStudents.html")) {
+        await mostrarTareas();
+    }
 
-    });
+});
+document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('botonblanco')) {  
+        const cartaPadre = e.target.closest('.carta');
+        cartaPadre.classList.toggle('flip');  
+    }
+});
