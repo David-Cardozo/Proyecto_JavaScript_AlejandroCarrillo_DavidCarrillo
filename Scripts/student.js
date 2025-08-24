@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         return cursos
 
     }
+
     async function cursostotales() {
         const usuarioactual = JSON.parse(localStorage.getItem('usuarioactual'));
         const data2 = await fetchDataCursos();
@@ -190,8 +191,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 });
 document.addEventListener('click', function (e) {
-    if (e.target.classList.contains('botonblanco')) {  
+    if (e.target.classList.contains('botonblanco')) {
         const cartaPadre = e.target.closest('.carta');
-        cartaPadre.classList.toggle('flip');  
+        cartaPadre.classList.toggle('flip');
     }
 });
