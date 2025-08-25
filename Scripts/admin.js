@@ -272,6 +272,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     }
 
+
     if (window.location.pathname.includes("adminCurses.html")) {
         await allCurses();
     }
@@ -288,7 +289,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         await adminDashboard();
     }
 
-    
     const anadir = document.getElementById('enlace');
     anadir.addEventListener('click', function(event){
         ingresarUser();
