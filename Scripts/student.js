@@ -59,7 +59,9 @@ document.addEventListener("DOMContentLoaded", async function () {
                     </div>
                     <div class="linea"></div>
                     <div class="botonesCursos">
-                        <button class="botonverde" dataId="${curso.id}">Tareas</button>
+                        <a href="../webHTML/tareasStudents.html">
+                            <button class="botonverde">Tareas</button>
+                        </a>
                         <button class="botonblanco">Más...</button>
                     </div>
                 </div>
