@@ -230,3 +230,8 @@ header nav{
 .carta.flip>.contenedor {
     transform: rotateY(180deg);
 }
+
+.modalContainer{
+    background-color: #602828;
+    
+}
