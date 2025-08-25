@@ -1,0 +1,154 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #D9D9D9;
+    animation: aparecer2 0.8s forwards;
+}
+
+header{
+    background-color: #602828;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 5px 10%;
+}
+
+.logo{
+    margin-right: auto;
+    height: 75px;
+    width: auto;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.profile{
+    margin-left: auto;
+    height: 60px;
+    width: auto;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 100%;
+}
+
+.arrow{
+    padding-left: 10px;
+    height: 20px;
+    width: auto;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+header a{
+    font-size: 700;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 40px;
+    transition: all 0.2s;
+}
+
+header a:hover{
+    transform: scale(2,2);
+    color: rgb(4, 170, 54);
+}
+
+header img:hover{
+    transform: scale(1.2,1.2);
+}
+
+.todo{
+    display: flex;
+    justify-content: center;
+    
+}
+.fondoLogo img{
+    width: 31.25vw;
+    height: 31.25vw;
+    
+}
+.fondoLogo{
+    margin-top: 15vh;
+    opacity: 0;
+    display: flex;
+    animation: aparecer1 3s forwards;
+    
+       
+}
+
+.boxLogin{
+    position: absolute;
+    margin: 30px 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #FDECDA ;
+    width: 43vw;;
+    height: 90vh;
+    border-radius: 57px;
+    opacity: 0;
+    visibility: hidden;
+    animation: aparecer2 0.5s forwards;
+    animation-delay: 0.5s;
+
+}
+.boxLogin img{
+    width: 17vw;
+    height: 17vh;
+    
+}
+.logoNegro{
+    display: flex;
+    justify-content: center;
+}
+.titulo{
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+}
+.contenido{
+    font-size: 22px;
+    margin-top: 2vh;
+}
+.usuario{
+    margin-left: 5vw;
+}
+.Contraseña, .nombreC, .email, .telefono, .type{
+    margin-top: 4vh;
+    margin-left: 5vw;
+}
+.type{
+    margin-left: 35vh;
+}
+input{
+    width: 90%;
+    height: 25px;
+    border-radius: 20px;
+    padding-left: 1vw;
+
+    
+}
+.boton{
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+    
+}
+button{
+    background-color: #D9D9D9;
+    width: 10vw;
+    height: 5vh;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 17px;
+}
+button:active{
+    transform: translateY(2px);
+}
+@keyframes aparecer2 {
+    0%{opacity: 0; visibility: visible;}
+    100%{opacity: 1; visibility: visible;}
+}

@@ -236,6 +236,41 @@ document.addEventListener("DOMContentLoaded", async function () {
     `;
     }
 
+    async function ingresarUser() {
+        const usuario = document.getElementById('usuario').value.trim();
+        const pass = document.getElementById('pass').value.trim();
+        const nombreC = document.getElementById('nombreC').value.trim();
+        const correo = document.getElementById('correo').value.trim();
+        const telefono = document.getElementById('telefono').value.trim();
+        let tipoUsuario = document.getElementById('type').value.trim();
+
+
+        tipoUsuario = tipoUsuario.charAt(0).toUpperCase() + tipoUsuario.slice(1);
+
+        const nuevoUsuario = {
+            name: nombreC,
+            telefono: telefono,
+            email: correo,
+            password: pass,
+            user: usuario,
+            type: tipoUsuario,
+            cursos: [],
+            tareas: []
+        };
+
+        const newData = await fetch('https://68a74769639c6a54e9a1952a.mockapi.io/api/login/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(nuevoUsuario)
+        });
+
+        if(newData.ok){
+            alert('Usuario creado Correctamente')
+        }
+
+    }
 
     if (window.location.pathname.includes("adminCurses.html")) {
         await allCurses();
@@ -253,10 +288,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         await adminDashboard();
     }
 
-    const openModal = document.querySelector(`.botonverde`);
-
-    openModal.addEventListener("click", ()=>{
-        modal.showModal();
+    
+    const anadir = document.getElementById('enlace');
+    anadir.addEventListener('click', function(event){
+        ingresarUser();
     });
 
 });
