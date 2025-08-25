@@ -137,4 +137,60 @@ header nav{
     transform: translateY(1px);
     background-color: #D9D9D9;
 }
+.overlay {
+    position: fixed;       
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.6); 
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    z-index: 10;          
+}
 
+.tareaCompleta {
+    background-color: white;
+    border-radius: 10px;
+    width: 50%;
+    height: 40%;
+    overflow-y: auto;
+    animation: aparecer 0.3s ease;
+}
+.titulopopup {
+    background-color: #602828;
+    width: 100%;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    font-size: 25px;
+}
+.descripcionpopup{
+    font-size: 22px;
+    padding: 1em;
+}
+.cerrar {
+    cursor: pointer;
+}
+.cerrar img {
+    width: 25px;
+    height: 25px;
+}
+.subirTarea{
+    margin-top: 150px;
+    flex-direction: column;
+}
+.subirTarea label{
+    font-size: 24px;
+}
+.inputLink{
+    border-radius: 20px;
+    background-color: #D9D9D9;
+    color: blue;
+    width: 80%;
+    height: 25px;
+    padding: 1em;
+}

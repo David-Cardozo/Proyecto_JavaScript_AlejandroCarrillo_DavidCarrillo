@@ -162,7 +162,11 @@ document.addEventListener("DOMContentLoaded", async function () {
             let pendientesHTML = '';
             pendientes.forEach(t => {
                 pendientesHTML += `
-        <button class="botonTarea">
+        <button class="botonTarea" 
+        cursoidPopup=${curso.id}" 
+        idPopup="${t.id}" 
+        tituloPopup="${t.titulo}" 
+        descripcionpopup="${t.descripcion}">
             <img src="../Images/tareas.svg" alt=""> ${curso.nombre} - ${t.titulo}
         </button>
     `;
@@ -171,7 +175,11 @@ document.addEventListener("DOMContentLoaded", async function () {
             let terminadasHTML = '';
             terminadas.forEach(t => {
                 terminadasHTML += `
-        <button class="botonTarea">
+        <button class="botonTarea" 
+        cursoidPopup=${curso.id}" 
+        idPopup="${t.id}" 
+        tituloPopup="${t.titulo}" 
+        descripcionpopup="${t.descripcion}">
             <img src="../Images/tareas.svg" alt=""> ${curso.nombre} - ${t.titulo}
         </button>
     `;
@@ -274,4 +282,32 @@ document.addEventListener("click", function (e) {
       desaparecer.classList.add("visible");
     }, 600);
   }
+});
+document.addEventListener("click", function(e) {
+    if (e.target.classList.contains("botonTarea")) {
+        const titulo = e.target.getAttribute("tituloPopup");
+        const descripcion = e.target.getAttribute("descripcionPopup");
+
+        const overlay = document.querySelector(".overlay");
+        const popup = overlay.querySelector(".tareaCompleta");
+
+        overlay.style.display = "flex";
+
+        popup.querySelector(".titulopopup").innerHTML = `
+            <span>${titulo}</span>
+            <div class="cerrar"><img src="../Images/atras.svg" alt=""></div>
+        `;
+        popup.querySelector(".descripcionpopup").innerHTML = `
+            <p>${descripcion}</p>
+            <div class="subirTarea">
+            <label for="link">Tu trabajo (link):</label> <br>
+            <input type="url" id="link" placeholder="https://..." class="inputLink">
+            <button class="enviarTarea">Enviar</button>
+            </div>
+        `;
+    }
+
+    if (e.target.closest(".cerrar") || e.target.classList.contains("overlay")) {
+        document.querySelector(".overlay").style.display = "none";
+    }
 });

@@ -25,15 +25,15 @@
         <!-- ejemplo de como se ve la tarea cuando se inserta por javascript -->
         
     </div>
-    <div class="tareaCompleta">
-            <div class="titulopopup"></div>
-            <div class="descripcionpopup"></div>
-            <div class="trabajo">
-                <div class="contenido">
-                    <div><label for="link-input">Pega tu enlace aquí:</label></div>
-                </div>
-            </div>
-    </div>
+    <div class="overlay" style="display: none;">
+        <div class="tareaCompleta">
+          <div class="titulopopup">
+            Título de la tarea
+            <div class="cerrar"><img src="../Images/atras.svg" alt=""></div>
+          </div>
+          <div class="descripcionpopup">Aquí va la descripción de la tarea...</div>
+        </div>
+      </div>
 </body>
 <script src="../Scripts/student.js"></script>
 </html>
