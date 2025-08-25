@@ -202,6 +202,38 @@ document.addEventListener("DOMContentLoaded", async function () {
     `;
         });
     }
+    async function mostrarDatos(){
+        const usuarioactual = JSON.parse(localStorage.getItem('usuarioactual'));
+        const nombreInput = document.querySelector(".nombreUsuario input");
+        console.log(usuarioactual)
+    nombreInput.value = usuarioactual.name;
+
+    const correoInput = document.querySelector(".correo input");
+     correoInput.value = usuarioactual.email;
+
+    const usuarioInput = document.querySelector(".namertag input");
+    usuarioInput.value = usuarioactual.user;
+
+    const telefonoInput = document.querySelector(".telefono input");
+     telefonoInput.value = usuarioactual.telefono;
+
+    const cedulaInput = document.querySelector(".cedula input");
+    cedulaInput.value = usuarioactual.type;
+
+    const passwordInput = document.querySelector(".contraseña input");
+    passwordInput.value = usuarioactual.password;
+
+    const nombreDiv = document.querySelector(".tituloPerfil .nombre");
+    nombreDiv.textContent = usuarioactual.nombre;
+    if(usuarioactual.type==='Estudiante'){
+        const imgPerfil = document.querySelector(".imagenUsuario img");
+        imgPerfil.src = "../Images/studentDashboard/studentIcon.png"
+    }
+    if(usuarioInput==='Profesor'){
+        imgPerfil.src = "../Images/professorIco.webp"
+    }
+}
+    
 
 
     if (window.location.pathname.includes("studentDashboard.html")) {
@@ -212,6 +244,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
     if (window.location.pathname.includes("tareasStudents.html")) {
         await mostrarTareas();
+    }
+    if (window.location.pathname.includes("perfilStudent.html")){
+        await mostrarDatos();
     }
 
 });

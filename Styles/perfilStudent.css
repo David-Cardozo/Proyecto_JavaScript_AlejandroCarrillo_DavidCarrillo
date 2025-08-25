@@ -105,7 +105,7 @@ header nav{
     gap: 1em;
 
 }
-.imagenUsuario{
+.imagenUsuario img{
     width: 13vw;        
     aspect-ratio: 1/1;  
     max-width: 160px; 
