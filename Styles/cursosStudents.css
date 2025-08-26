@@ -428,8 +428,11 @@ header nav{
     display: flex;
     justify-content: center;
 }
-
-.cuadro{
+.contenido4{
+    display: none;
+    flex-direction: column;
+}
+.cuadrox{
     margin-top: 5vh;
     width: 65vw;
     height: 20vh;
@@ -488,13 +491,20 @@ header nav{
     position: absolute;
     left: 65%;
 }
+.nota{
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
 .nota button{
-    position: absolute;
     background-color: white;
     border-radius: 8px;
     padding: 12px;
-    margin-top: 3.5em;
+    margin-top: 3.6em;
 }
 .cuadro3 button:hover {
     background-color: rgba(0, 0, 0, 0.3);;
+}
+.overlay2{
+    display: none;
 }

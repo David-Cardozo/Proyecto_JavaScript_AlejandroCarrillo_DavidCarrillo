@@ -309,7 +309,9 @@ document.addEventListener("click", function (e) {
   if (e.target.classList.contains("volverCursos")) {
     contenido3.classList.remove("visible");
     contenido3.style.display = "none";
-    
+    contenido4.classList.remove("visable");
+    contenido4.style.display="none";
+
     aparecer.classList.remove("visible");
     aparecer.classList.add("desaparecer");
 
@@ -339,7 +341,7 @@ document.addEventListener("click", function(e) {
             <div class="subirTarea">
             <label for="link">Tu trabajo (link):</label> <br>
             <input type="url" id="link" placeholder="https://..." class="inputLink">
-            <button class="enviarTarea">Enviar</button>
+            <div class="envia"><button class="enviarTarea">Enviar</button></div>
             </div>
         `;
     }
@@ -395,17 +397,18 @@ const contenido4 = document.querySelector(`.contenido4`);
 document.addEventListener("click", function (a) {
     if (a.target.classList.contains("botonnotas")) {
         aparecer.classList.remove("visible");
+        contenido4.style.display="flex"
 
         const usuarioactual = JSON.parse(localStorage.getItem('usuarioactual'));
 
         const idCurso = a.target.getAttribute("dataId");
         const cursoactual = cursos.find(c => c.id == idCurso);
-        const notaEstudiante = usuarioactual.tareas
         usuarioactual.tareas.find(tarea => tarea.cursoId === cursoactual.id)
-
+        let calificaciones="";
         let tareasHTML = "";
         if (cursoactual.tareas && cursoactual.tareas.length > 0) {
             cursoactual.tareas.forEach(tarea => {
+                
                 tareasHTML += `
                     <div class="tarea">
                         <button>
@@ -415,9 +418,23 @@ document.addEventListener("click", function (a) {
                         </button>
                     </div>
                 `;
+                const notaTarea = usuarioactual.tareas.find(
+                    t => t.cursoId == cursoactual.id && t.idTarea == tarea.id
+                );
+
+                let notaactual = "";
+                if (notaTarea) {
+                    notaactual = notaTarea.nota;  
+                } 
+                else {
+                    notaactual = "";  
+                }
+
+                calificaciones += `
+                    <button>Calificación: ${notaactual}</button>
+                `;
             });
         }
-
         const nombre = usuarioactual.name;
         let imgPerfil = "";
         if (usuarioactual.type === "Estudiante") {
@@ -429,7 +446,7 @@ document.addEventListener("click", function (a) {
             <button class="volverCursos"> ← Volver a cursos </button>
         </div>
 
-        <div class="cuadro">
+        <div class="cuadrox">
             <img src="${imgPerfil}" alt="" class="imagenNota">
             <p class="nombrenota">${nombre}</p>
         </div>
@@ -443,7 +460,7 @@ document.addEventListener("click", function (a) {
             </div>
             <div class="cuadro4">
                 <div><p>Calificación (de 1 a 100)</p></div>
-                <div class="nota"> <button>Calificación: ${notaEstudiante.nota} </button></div>
+                <div class="nota"> ${calificaciones}</div>
             </div>
         </div>
         `;
