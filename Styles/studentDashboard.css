@@ -295,38 +295,34 @@ header img:hover{
 .oculto {
     display: none;
     opacity: 0;
-  }
-  
-  .visible {
+}  
+.visible {
     display: flex; 
     animation: aparecer 0.6s forwards;
-  }
-  
-  @keyframes aparecer {
+}  
+@keyframes aparecer {
     from {
-      opacity: 0;
-      transform: translateY(20px);
+    opacity: 0;
+    transform: translateY(20px);
     }
     to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
     }
-  }
-  
-  .desaparecer {
+}  
+.desaparecer {
     animation: desaparecer 0.6s forwards;
-  }
-  
-  @keyframes desaparecer {
+}  
+@keyframes desaparecer {
     from {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
     }
     to {
-      opacity: 0;
-      transform: translateY(20px);
+    opacity: 0;
+    transform: translateY(20px);
     }
-  }
+}
 .botonesCursos a{
     font-size: 20px;
     width: 80%;

@@ -205,7 +205,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     async function mostrarDatos(){
         const usuarioactual = JSON.parse(localStorage.getItem('usuarioactual'));
         const nombreInput = document.querySelector(".nombreUsuario input");
-        console.log(usuarioactual)
     nombreInput.value = usuarioactual.name;
 
     const correoInput = document.querySelector(".correo input");
@@ -257,7 +256,7 @@ document.addEventListener('click', function (e) {
     }
 });
 const desaparecer = document.querySelector(`.contenido`);
-const aparecer = document.querySelector(`.contenido2`)
+const aparecer = document.querySelector(`.contenido2`);
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("botonverde")) {
     desaparecer.classList.remove("visible");
@@ -295,7 +294,7 @@ document.addEventListener("click", function (e) {
             <div class="temasJs">
               <div class="negrilla">Temas</div>
               ${temas}
-              <button>Ver</button>
+              <button class="verTemas" dataId2="${curso.id}">Ver</button>
             </div>
             <div class="notas"><button>Ver Notas</button></div>
           </div>
@@ -308,6 +307,9 @@ document.addEventListener("click", function (e) {
   }
 
   if (e.target.classList.contains("volverCursos")) {
+    contenido3.classList.remove("visible");
+    contenido3.style.display = "none";
+    
     aparecer.classList.remove("visible");
     aparecer.classList.add("desaparecer");
 
@@ -344,5 +346,48 @@ document.addEventListener("click", function(e) {
 
     if (e.target.closest(".cerrar") || e.target.classList.contains("overlay")) {
         document.querySelector(".overlay").style.display = "none";
+    }
+});
+
+const contenido3=document.querySelector(`.contenido3`)
+document.addEventListener("click", function (a){
+    if (a.target.classList.contains("verTemas")){
+        aparecer.classList.remove("visible");
+        const idCurso = a.target.getAttribute("dataId2");
+        const curso = cursos.find((c) => c.id == idCurso);
+        let botonestemas = "";
+        curso.temas.forEach((t) => {
+            botonestemas += `
+                <button class="botonTemas" contenidoTema="${t.contenido}">
+                    ${t.id}. ${t.titulo}
+                </button>
+            `;
+        });
+        contenido3.innerHTML=`
+    <div class="atras"><button class="volverCursos"> ← Volver a cursos </button></div>
+    <div class="desplegable">
+        <div class="titulodetemas"><p>Temas del curso</p></div>
+        <div class="division">
+            <div class="temas">${botonestemas}</div>
+            <div class="reflejardata"><p>Seleccione un tema para comenzar a aprender  <br><span>
+                Elija un tema de la barra lateral para comenzar a ver el contenido del curso.</span></p>
+            </div>
+        </div>
+        </div>
+        
+        `
+    contenido3.style.display = "flex";
+    contenido3.classList.add("visible"); 
+    }
+})
+document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("botonTemas")) {
+        const contenido = e.target.getAttribute("contenidoTema");
+        const reflejardata = document.querySelector(".reflejardata");
+        if (reflejardata && contenido) {
+            reflejardata.innerHTML = `
+                <div class="cuadro">${contenido}</div>
+            `;
+        }
     }
 });
