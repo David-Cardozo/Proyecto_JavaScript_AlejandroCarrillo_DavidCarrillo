@@ -341,12 +341,12 @@ document.addEventListener("click", function(e) {
             <div class="subirTarea">
             <label for="link">Tu trabajo (link):</label> <br>
             <input type="url" id="link" placeholder="https://..." class="inputLink">
-            <div class="envia"><button class="enviarTarea">Enviar</button></div>
+            <button class="enviarTarea" cursopopupid="${e.target.getAttribute("cursoidPopup")}" tareapopupid="${e.target.getAttribute("idPopup")}">Enviar</button>
             </div>
         `;
     }
 
-    if (e.target.closest(".cerrar") || e.target.classList.contains("overlay")) {
+    if (e.target.closest(".cerrar")) {
         document.querySelector(".overlay").style.display = "none";
     }
 });

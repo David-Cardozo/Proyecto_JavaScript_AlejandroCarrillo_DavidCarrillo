@@ -180,7 +180,8 @@ header nav{
     height: 25px;
 }
 .subirTarea{
-    margin-top: 150px;
+    margin-top: 120px;
+    display: flex;
     flex-direction: column;
 }
 .subirTarea label{
@@ -195,6 +196,7 @@ header nav{
     padding: 1em;
 }
 .enviarTarea{
+    text-align: center;
     margin-top: 2em;
     border-radius: 1em;
     width: 5vw;
