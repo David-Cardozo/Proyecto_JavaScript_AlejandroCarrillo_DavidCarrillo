@@ -208,13 +208,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     nombreInput.value = usuarioactual.name;
 
     const correoInput = document.querySelector(".correo input");
-     correoInput.value = usuarioactual.email;
+    correoInput.value = usuarioactual.email;
 
     const usuarioInput = document.querySelector(".namertag input");
     usuarioInput.value = usuarioactual.user;
 
     const telefonoInput = document.querySelector(".telefono input");
-     telefonoInput.value = usuarioactual.telefono;
+    telefonoInput.value = usuarioactual.telefono;
 
     const cedulaInput = document.querySelector(".cedula input");
     cedulaInput.value = usuarioactual.type;
@@ -296,7 +296,7 @@ document.addEventListener("click", function (e) {
               ${temas}
               <button class="verTemas" dataId2="${curso.id}">Ver</button>
             </div>
-            <div class="notas"><button>Ver Notas</button></div>
+            <div class="notas"><button class="botonnotas" dataId="${curso.id}">Ver Notas</button></div>
           </div>
         </div>
       `;
@@ -389,5 +389,56 @@ document.addEventListener("click", function (e) {
                 <div class="cuadro">${contenido}</div>
             `;
         }
+    }
+});
+const contenido4 = document.querySelector(`.contenido4`);
+document.addEventListener("click", function (a) {
+    if (a.target.classList.contains("botonnotas")) {
+        aparecer.classList.remove("visible");
+
+        const usuarioactual = JSON.parse(localStorage.getItem('usuarioactual'));
+
+        const idCurso = a.target.getAttribute("dataId");
+        const cursoactual = cursos.find(c => c.id == idCurso);
+        const notaEstudiante = usuarioactual.tareas
+        usuarioactual.tareas.find(tarea => tarea.cursoId === cursoactual.id)
+
+        let tareasHTML = "";
+        if (cursoactual.tareas && cursoactual.tareas.length > 0) {
+            cursoactual.tareas.forEach(tarea => {
+                tareasHTML += `
+                    <div class="tarea">
+                        <h4>${tarea.titulo}</h4>
+                        <p>${tarea.descripcion}</p>
+                    </div>
+                `;
+            });
+        }
+
+        const nombre = usuarioactual.name;
+        let imgPerfil = "";
+        if (usuarioactual.type === "Estudiante") {
+            imgPerfil = "../Images/studentDashboard/studentIcon.png";
+        }
+
+        contenido4.innerHTML = `
+            <div class="atras">
+                <button class="volverCursos"> ← Volver a cursos </button>
+            </div>
+
+            <div class="cuadro">
+                <img src="${imgPerfil}" alt="" class="imagenNota">
+                <p class="nombrenota">${nombre}</p>
+            </div>
+
+            <div class="cuadro2">
+                <div class="titulonota"><h2>${cursoactual.nombre}</h2></div>
+                <div><p>Calificación (de 1 a 100)</p></div>
+                <div class="vizualizar">
+                    ${tareasHTML}
+                </div>
+                <div class="nota">Calificación: ${notaEstudiante.nota}</div>
+            </div>
+        `;
     }
 });
