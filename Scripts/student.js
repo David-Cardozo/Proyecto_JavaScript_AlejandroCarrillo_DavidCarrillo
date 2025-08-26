@@ -408,8 +408,11 @@ document.addEventListener("click", function (a) {
             cursoactual.tareas.forEach(tarea => {
                 tareasHTML += `
                     <div class="tarea">
-                        <h4>${tarea.titulo}</h4>
+                        <button>
+                        <img src="../Images/tareas.svg" alt="">
+                        <h4>${tarea.titulo}</h4>-
                         <p>${tarea.descripcion}</p>
+                        </button>
                     </div>
                 `;
             });
@@ -422,23 +425,27 @@ document.addEventListener("click", function (a) {
         }
 
         contenido4.innerHTML = `
-            <div class="atras">
-                <button class="volverCursos"> ← Volver a cursos </button>
-            </div>
+        <div class="atras">
+            <button class="volverCursos"> ← Volver a cursos </button>
+        </div>
 
-            <div class="cuadro">
-                <img src="${imgPerfil}" alt="" class="imagenNota">
-                <p class="nombrenota">${nombre}</p>
-            </div>
+        <div class="cuadro">
+            <img src="${imgPerfil}" alt="" class="imagenNota">
+            <p class="nombrenota">${nombre}</p>
+        </div>
 
-            <div class="cuadro2">
+        <div class="cuadro2">
+            <div class="cuadrito">
                 <div class="titulonota"><h2>${cursoactual.nombre}</h2></div>
-                <div><p>Calificación (de 1 a 100)</p></div>
-                <div class="vizualizar">
+                <div class="cuadro3">
                     ${tareasHTML}
                 </div>
-                <div class="nota">Calificación: ${notaEstudiante.nota}</div>
             </div>
+            <div class="cuadro4">
+                <div><p>Calificación (de 1 a 100)</p></div>
+                <div class="nota"> <button>Calificación: ${notaEstudiante.nota} </button></div>
+            </div>
+        </div>
         `;
     }
 });
