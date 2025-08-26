@@ -236,6 +236,25 @@ document.addEventListener("DOMContentLoaded", async function () {
     `;
     }
 
+    
+    async function loadCursesForm(){
+        const dataCursos = await fetchDataCurses();
+        const printCurses = document.getElementById('printCurses');
+        printCurses.innerHTML = ``;
+        
+        dataCursos.forEach(i => {
+            nombreCurso = i.nombre;
+            idCurso = i.id;
+            printCurses.innerHTML += `
+            <div class="cursos">
+                    <input type="checkbox" class="seleccionCursos" id="curso${idCurso}" data-id-Guia="${idCurso}"/>
+                    <label for="curso${idCurso}">${nombreCurso}</label>
+            </div>
+        `;
+        })
+    }
+    
+
     async function ingresarUser() {
         const usuario = document.getElementById('usuario').value.trim();
         const pass = document.getElementById('pass').value.trim();
@@ -243,9 +262,23 @@ document.addEventListener("DOMContentLoaded", async function () {
         const correo = document.getElementById('correo').value.trim();
         const telefono = document.getElementById('telefono').value.trim();
         let tipoUsuario = document.getElementById('type').value.trim();
+        tipoUsuario = tipoUsuario.charAt(0).toUpperCase() + tipoUsuario.slice(1); 
+        const dataCurses = await fetchDataCurses();  
+        const tareaxCurso = dataCurses.tareas;
+
+        const checks = document.querySelectorAll('.seleccionCursos');
+        const cursosElegidos = []   
+
+        checks.forEach(a => {
+            if (a.checked) {
+                cursosElegidos.push(Number(a.dataset.idGuia)); 
+            }
+        });
 
 
-        tipoUsuario = tipoUsuario.charAt(0).toUpperCase() + tipoUsuario.slice(1);
+        console.log(cursosElegidos);
+
+        
 
         const nuevoUsuario = {
             name: nombreC,
@@ -254,7 +287,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             password: pass,
             user: usuario,
             type: tipoUsuario,
-            cursos: [],
+            cursos: cursosElegidos,
             tareas: []
         };
 
@@ -266,7 +299,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             body: JSON.stringify(nuevoUsuario)
         });
 
-        if(newData.ok){
+        if (newData.ok) {
             alert('Usuario creado Correctamente')
         }
 
@@ -288,11 +321,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (window.location.pathname.includes("adminDashboard.html")) {
         await adminDashboard();
     }
+    if (window.location.pathname.includes("adminNewperfil.html")) {
+        await loadCursesForm();
+    }
 
     const anadir = document.getElementById('enlace');
-    anadir.addEventListener('click', function(event){
+    anadir.addEventListener('click', function (event) {
         ingresarUser();
     });
-
 });
 
